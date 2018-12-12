@@ -72,6 +72,10 @@ public class Person {
 		if (!SSN.isEmpty()) {
 			this.SSN = SSN;
 		} // end if
+		else {
+			this.SSN = "SSN not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 
 	}// end setSSN
 
@@ -99,6 +103,10 @@ public class Person {
 		if (!DOB.isEmpty()) {
 			this.DOB = DOB;
 		} // end if
+		else {
+			this.DOB = "DOB not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setDOB
 
 	/**
@@ -124,6 +132,10 @@ public class Person {
 		if (!email.isEmpty()) {
 			this.email = email;
 		} // end if
+		else {
+			this.email = "email not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setEmail
 
 	/**
@@ -149,6 +161,10 @@ public class Person {
 		if (!fName.isEmpty()) {
 			this.fName = fName;
 		} // end if
+		else {
+			this.fName = "fName not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setfName
 
 	/**
@@ -174,6 +190,10 @@ public class Person {
 		if (!lName.isEmpty()) {
 			this.lName = lName;
 		} // end if
+		else {
+			this.lName = "lName not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setlName
 
 	/**
@@ -199,6 +219,10 @@ public class Person {
 		if (!pNumber.isEmpty()) {
 			this.pNumber = pNumber;
 		} // end if
+		else {
+			this.pNumber = "pNumber not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setpNumber
 
 	/**
@@ -224,6 +248,10 @@ public class Person {
 		if (!address.isEmpty()) {
 			this.address = address;
 		} // end if
+		else {
+			this.address = "address not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setAddress
 
 	/**
@@ -249,6 +277,10 @@ public class Person {
 		if (!emerCont.isEmpty()) {
 			this.emerCont = emerCont;
 		} // end if
+		else {
+			this.emerCont = "emerCont not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 	}// end setEmerCont
 
 	/**
@@ -274,6 +306,10 @@ public class Person {
 		if (!ID.isEmpty()) {
 			this.ID = ID;
 		} // end if
+		else {
+			this.ID = "ID not entered";
+			System.out.println("\n\tError: Invalid data!\n");
+		}//end else
 
 	}// end setID
 
