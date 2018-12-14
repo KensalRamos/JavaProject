@@ -1,5 +1,11 @@
 package javaProject;
-
+/*
+ * File Name: 		Application.java
+ * Name:			Kensal Ramos, Carlos, Jaime 
+ * Course:			COP 2800C at Valencia College
+ * Instructor:		David Stendel
+ * Description:		Employee class has the information every employee needs
+ */
 public class Employee extends Person {
 	private String gender;//employee gender
 	private String education;//highest education obtained or degree
