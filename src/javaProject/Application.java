@@ -51,17 +51,18 @@ public class Application {
 					case 2:
 						clrScreen();
 						retMenu();
-						//retEntry();
+						System.out.println("Entry found: ");
+						printEmpEntry(retEntry(empData, SIZE), empData);
 						break;
 					case 3:
 						clrScreen();
 						updateMenu();
-						//updateEntry();
+						updateEmpEntry(retEntry(empData, SIZE), empData);
 						break;
 					case 4:
 						clrScreen();
 						delMenu();
-						//delEntry();
+						delEmpEntry(retEntry(empData, SIZE), empData);
 						break;
 						
 					}
@@ -90,17 +91,17 @@ public class Application {
 					case 2:
 						clrScreen();
 						retMenu();
-						//retEntry();
+						printCEntry(retEntry(clientData, SIZE), clientData);
 						break;
 					case 3:
 						clrScreen();
 						updateMenu();
-						//updateEntry();
+						updateCEntry(retEntry(clientData, SIZE), clientData);
 						break;
 					case 4:
 						clrScreen();
 						delMenu();
-						//delEntry();
+						delCEntry(retEntry(clientData, SIZE), clientData);
 						break;
 						
 					}
@@ -324,14 +325,16 @@ public class Application {
 				System.out.println("You entered: " + database[i].getWage());
 					
 				printEmpEntry(i, database);
+				//delEmpEntry(i, database);
 				break;
 					
 				}
 				
 		}
+		scanner.close();
 	}
 	
-public static void createCEntry(int SIZE, Client[] database) {
+	public static void createCEntry(int SIZE, Client[] database) {
 		
 		Scanner scanner = new Scanner(System.in);
 
@@ -382,8 +385,12 @@ public static void createCEntry(int SIZE, Client[] database) {
 				break;
 					
 				}
+			
+			
 				
 		}
+		
+		scanner.close();
 	}
 	
 	/*
@@ -424,13 +431,638 @@ public static void createCEntry(int SIZE, Client[] database) {
 		
 	}
 	
+	/*
+	 * 
+	 */
+	public static int retEntry(Person[] database, int SIZE) {
+		
+		String temp;
+		int index = 0;
+		
+		Scanner scanner =  new Scanner(System.in);
+		
+		System.out.println("Please enter the last name of the desired entry: ");
+		temp = scanner.nextLine();
+		
+		for (int i = 0; i < SIZE; i++) {
+			
+			// If it is not empty...
+			if (database[i] != null) {
+		
+				// Test each char individually
+				if (database[i].getlName().equals(temp)) {
+					index  = i;
+					System.out.println("Found matching entry successfully");
+					break;
+				}
+				
+			}
+		}
+		
+		scanner.close();
+		return index;
+	}
 	
+	/*
+	 * 
+	 */
+	public static int retCEntry(Employee[] database) {
+		return 0;
+	}
 	
+	/*
+	 * Name: delEntry()
+	 */
+	public static void delEmpEntry(int i, Employee[] database) {
+		database[i] = null;
+	}
 	
+	/*
+	 * 
+	 */
+	public static void delCEntry(int i, Client[] database) {
+		database[i] = null;
+	}
 	
+	/*
+	 * Name: updateEmpEntry()
+	 */
+	public static void updateEmpEntry(int i, Employee[] database) {
+		
+		int
+			num = 0;
+		String
+			choice = "";
+		
+		Scanner scanner =  new Scanner(System.in);
+		
+		System.out.println("Entry found was: ");
+		printEmpEntry(i, database);
+		
+		if (database[i] != null) {
+			
+			// SSN
+			do {
+				
+				System.out.println("Would you like to update the Social Security Number? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired SSN: ");
+					database[i].setSSN(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Last name
+			do {
+				
+				System.out.println("Would you like to update the last name? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired last name: ");
+					database[i].setlName(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// First name 
+			do {
+				
+				System.out.println("Would you like to update the first name? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired first name: ");
+					database[i].setfName(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Date of birth
+			do {
+				
+				System.out.println("Would you like to update the DOB? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired DOB: ");
+					database[i].setDOB(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Phone number
+			do {
+				
+				System.out.println("Would you like to update the phone number? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired phone number: ");
+					database[i].setpNumber(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Email
+			do {
+				
+				System.out.println("Would you like to update the email? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired email: ");
+					database[i].setEmail(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Address
+			do {
+				
+				System.out.println("Would you like to update the address? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired address: ");
+					database[i].setAddress(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Gender
+			do {
+				
+				System.out.println("Would you like to update the gender? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired gender: ");
+					database[i].setGender(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Education
+			do {
+				
+				System.out.println("Would you like to update the education? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired education: ");
+					database[i].setEducation(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Marital status
+			do {
+				
+				System.out.println("Would you like to update the marital status? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired marital status: ");
+					database[i].setMaritalStat(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Date of employment
+			do {
+				
+				System.out.println("Would you like to update the date of employment? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired date of employment: ");
+					database[i].setHireDate(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Job title
+			do {
+				
+				System.out.println("Would you like to update the job title? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired job title: ");
+					database[i].setJobTitle(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Wage
+			do {
+				
+				System.out.println("Would you like to update the wage? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired wage: ");
+					database[i].setWage(scanner.nextDouble());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+		}
+		
+		scanner.close();
+	}
 	
-	
-	
-	
+public static void updateCEntry(int i, Client[] database) {
+		
+		int
+			num = 0;
+		String
+			choice = "";
+		
+		Scanner scanner =  new Scanner(System.in);
+		
+		System.out.println("Entry found was: ");
+		printCEntry(i, database);
+		
+		if (database[i] != null) {
+			
+			// SSN
+			do {
+				
+				System.out.println("Would you like to update the Social Security Number? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired SSN: ");
+					database[i].setSSN(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Last name
+			do {
+				
+				System.out.println("Would you like to update the last name? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired last name: ");
+					database[i].setlName(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// First name 
+			do {
+				
+				System.out.println("Would you like to update the first name? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired first name: ");
+					database[i].setfName(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Date of birth
+			do {
+				
+				System.out.println("Would you like to update the DOB? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired DOB: ");
+					database[i].setDOB(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Phone number
+			do {
+				
+				System.out.println("Would you like to update the phone number? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired phone number: ");
+					database[i].setpNumber(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Email
+			do {
+				
+				System.out.println("Would you like to update the email? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired email: ");
+					database[i].setEmail(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Address
+			do {
+				
+				System.out.println("Would you like to update the address? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired address: ");
+					database[i].setAddress(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+		}
+		
+		scanner.close();
+	}
 	
 }
