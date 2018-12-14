@@ -1,11 +1,12 @@
 package javaProject;
 /*
  * File Name: 		Application.java
- * Name:			Kensal Ramos, Carlos, Jaime 
+ * Name:			Kensal Ramos, Carlos Ortizfigueroa, Jaime 
  * Course:			COP 2800C at Valencia College
  * Instructor:		David Stendel
  * Description:		Employee class has the information every employee needs
  */
+
 public class Employee extends Person {
 	private String gender;//employee gender
 	private String education;//highest education obtained or degree
@@ -19,12 +20,12 @@ public class Employee extends Person {
 			String address, String emerCont, String ID,
 			String gender, String education, String maritalStat, String hireDate,String jobTitle, double wage) {
 		super(SSN, DOB, email, fName, lName, pNumber, address, emerCont,ID);
-		this.gender = gender;
-		this.education = education;
-		this.maritalStat = maritalStat;
-		this.hireDate = hireDate;
-		this.jobTitle = jobTitle;
-		this.wage = wage;
+		setGender(gender);
+		setEducation(education);
+		setMaritalStat(maritalStat);
+		setHireDate(hireDate);
+		setJobTitle(jobTitle);
+		setWage(wage);
 	}//end Employee
 	
 	//Create Getters and Setters
@@ -147,4 +148,26 @@ public class Employee extends Person {
 			System.out.println("\n\tError: Invalid data!\n");
 		}//end else
 	}//end setWage
+
+	/**
+	 * @param
+	 * @return
+	 * @see
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		boolean flag = false;
+		
+		if (obj instanceof Employee) {
+			if(((Employee)obj).getID() == this.getID()){
+			flag = true;
+			}//end if
+		}//end if
+		return flag;
+
+		}//end equals
+	@Override
+	public String toString() {
+		return super.toString() + "Employee [ID= " + getID() + ", Hired= "+ getHireDate() + "Job Desc.= " + getJobTitle() + "Gender= " + getGender() +"]";
+		}//end toString
 }//end Employee
