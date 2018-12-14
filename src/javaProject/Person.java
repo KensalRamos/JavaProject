@@ -4,7 +4,7 @@ package javaProject;
  * File Name: Application.java Name: Kensal Ramos, Carlos Ortizfigueroa, Jaime
  * Course: COP 2800C at Valencia College Instructor: David Stendel Description:
  * Person class holds the basic information everyone has
- */
+ */ 
 
 public class Person {
 
@@ -99,12 +99,12 @@ public class Person {
 	 */
 
 	public void setDOB(String DOB) {
-		// Validation
+		// addValidation
 		if (!DOB.isEmpty()) {
-			this.DOB = DOB;
+			this.DOB = email;
 		} // end if
 		else {
-			this.DOB = "DOB not entered";
+			this.DOB = "email not entered";
 			System.out.println("\n\tError: Invalid data!\n");
 		}//end else
 	}// end setDOB
@@ -310,7 +310,35 @@ public class Person {
 			this.ID = "ID not entered";
 			System.out.println("\n\tError: Invalid data!\n");
 		}//end else
-
 	}// end setID
-
+	
+	//Utilities not getters and setters but help with work.
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((SSN == null) ? 0 :SSN.hashCode());
+				return result;
+	}//end hashCode
+	
+	/**
+	 * @param
+	 * @return
+	 * @see
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		boolean flag = false;
+		
+		if (obj instanceof Person) {
+			if(((Person)obj).getSSN() == this.getSSN()){
+			flag = true;
+			}//end if
+		}//end if
+		return flag;
+	}
+	@Override
+	public String toString() {
+		return "Person [Name= " + getfName() + " " + getlName() + ", Date of Birth= "+ getDOB() + ",SSN= " + getSSN() + "]";
+		}//end toString
 }// end person
