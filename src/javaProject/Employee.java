@@ -1,4 +1,5 @@
 package javaProject;
+
 /*
  * File Name: 		Application.java
  * Name:			Kensal Ramos, Carlos Ortizfigueroa, Jaime 
@@ -8,13 +9,17 @@ package javaProject;
  */
 
 public class Employee extends Person {
-	private String gender;//employee gender
-	private String education;//highest education obtained or degree
-	private String maritalStat;//married,single
-	private String hireDate;//date hired
-	private String jobTitle;//description of jobTitle
-	private double wage;//yearly salary
-
+	
+	private String gender;
+	private String education;
+	private String maritalStat;
+	private String hireDate;
+	private String jobTitle;
+	private double wage;
+	
+	public Employee() {
+		
+	}
 	//Create Constructs
 	public Employee(String SSN,String DOB, String email, String fName, String lName, String pNumber,
 			String address, String emerCont, String ID,
@@ -26,7 +31,7 @@ public class Employee extends Person {
 		setHireDate(hireDate);
 		setJobTitle(jobTitle);
 		setWage(wage);
-	}//end Employee
+	}
 	
 	//Create Getters and Setters
 	
@@ -43,12 +48,12 @@ public class Employee extends Person {
 	public void setGender(String gender) {
 		if (!gender.isEmpty()) {
 			this.gender = gender;
-		}//end if
+		}
 		else {
 			this.gender = "gender not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-	}//end else
-	}//end setGender
+	}
+	}
 	/**
 	 * @return the education
 	 */
@@ -62,12 +67,12 @@ public class Employee extends Person {
 	public void setEducation(String education) {
 		if (!education.isEmpty()) {
 			this.education = education;
-		}// end if
+		}
 		else {
 			this.education = "education not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}//end setEducation
+		}
+	}
 
 	/**
 	 * @return the maritalStat
@@ -82,12 +87,12 @@ public class Employee extends Person {
 	public void setMaritalStat(String maritalStat) {
 		if (!maritalStat.isEmpty()) {
 			this.maritalStat = maritalStat;
-		}// end if
+		}
 		else {
 			this.maritalStat = "marital status not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}//end setMaritalStat
+		}
+	}
 
 	/**
 	 * @return the hireDate
@@ -102,12 +107,12 @@ public class Employee extends Person {
 	public void setHireDate(String hireDate) {
 		if (!hireDate.isEmpty()) {
 			this.hireDate = hireDate;
-		}// end if
+		}
 		else {
 			this.hireDate = "hireDate not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}//end setHireDate
+		}
+	}
 
 	/**
 	 * @return the jobTitle
@@ -122,12 +127,12 @@ public class Employee extends Person {
 	public void setJobTitle(String jobTitle) {
 		if (!jobTitle.isEmpty()) {
 			this.jobTitle = jobTitle;
-		}// end if
+		}
 		else {
 			this.jobTitle = "jobTitle not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}//end setJobTitle
+		}
+	}
 
 	/**
 	 * @return the wage
@@ -142,12 +147,12 @@ public class Employee extends Person {
 	public void setWage(double wage) {
 		if (wage != 0) {
 			this.wage = wage;
-		}// end if
+		}
 		else {
 			this.wage = 0.00;
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}//end setWage
+		}
+	}
 
 	/**
 	 * @param
@@ -161,13 +166,15 @@ public class Employee extends Person {
 		if (obj instanceof Employee) {
 			if(((Employee)obj).getID() == this.getID()){
 			flag = true;
-			}//end if
-		}//end if
+			}
+		}
 		return flag;
 
-		}//end equals
+		}
+	
 	@Override
 	public String toString() {
 		return super.toString() + "Employee [ID= " + getID() + ", Hired= "+ getHireDate() + "Job Desc.= " + getJobTitle() + "Gender= " + getGender() +"]";
-		}//end toString
-}//end Employee
+		}
+	
+}
