@@ -1,9 +1,11 @@
 package javaProject;
 
-/**
- * File Name: Application.java Name: Kensal Ramos, Carlos Ortizfigueroa, Jaime
- * Course: COP 2800C at Valencia College Instructor: David Stendel Description:
- * Person class holds the basic information everyone has
+/*
+ * File Name: Application.java 
+ * Name: Kensal Ramos, Carlos Ortizfigueroa, Jaime
+ * Course: COP 2800C at Valencia College 
+ * Instructor: David Stendel 
+ * Description: Person class holds the basic information everyone has.
  */ 
 
 public class Person {
@@ -11,9 +13,7 @@ public class Person {
 	// Fields
 
 	private String SSN, DOB, email, fName, lName, pNumber, address, emerCont,ID;
-
-	//private int ID; was made a string
-
+	
 	public Person() {
 
 	}
@@ -102,12 +102,12 @@ public class Person {
 		// addValidation
 		if (!DOB.isEmpty()) {
 			this.DOB = email;
-		} // end if
+		}
 		else {
 			this.DOB = "email not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setDOB
+		}
+	}
 
 	/**
 	 * 
@@ -131,12 +131,12 @@ public class Person {
 	public void setEmail(String email) {
 		if (!email.isEmpty()) {
 			this.email = email;
-		} // end if
+		} 
 		else {
 			this.email = "email not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setEmail
+		}
+	}
 
 	/**
 	 * 
@@ -160,12 +160,12 @@ public class Person {
 	public void setfName(String fName) {
 		if (!fName.isEmpty()) {
 			this.fName = fName;
-		} // end if
+		} 
 		else {
 			this.fName = "fName not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setfName
+		}
+	}
 
 	/**
 	 * 
@@ -189,12 +189,12 @@ public class Person {
 	public void setlName(String lName) {
 		if (!lName.isEmpty()) {
 			this.lName = lName;
-		} // end if
+		} 
 		else {
 			this.lName = "lName not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setlName
+		}
+	}
 
 	/**
 	 * 
@@ -218,12 +218,12 @@ public class Person {
 	public void setpNumber(String pNumber) {
 		if (!pNumber.isEmpty()) {
 			this.pNumber = pNumber;
-		} // end if
+		} 
 		else {
 			this.pNumber = "pNumber not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setpNumber
+		}
+	}
 
 	/**
 	 * 
@@ -247,12 +247,12 @@ public class Person {
 	public void setAddress(String address) {
 		if (!address.isEmpty()) {
 			this.address = address;
-		} // end if
+		} 
 		else {
 			this.address = "address not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setAddress
+		}
+	}
 
 	/**
 	 * 
@@ -276,12 +276,12 @@ public class Person {
 	public void setEmerCont(String emerCont) {
 		if (!emerCont.isEmpty()) {
 			this.emerCont = emerCont;
-		} // end if
+		} 
 		else {
 			this.emerCont = "emerCont not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setEmerCont
+		}
+	}
 
 	/**
 	 * 
@@ -305,12 +305,12 @@ public class Person {
 	public void setID(String ID) {// this was changed to a string
 		if (!ID.isEmpty()) {
 			this.ID = ID;
-		} // end if
+		}
 		else {
 			this.ID = "ID not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-		}//end else
-	}// end setID
+		}
+	}
 	
 	//Utilities not getters and setters but help with work.
 	@Override
@@ -319,7 +319,7 @@ public class Person {
 		int result = 1;
 		result = prime * result + ((SSN == null) ? 0 :SSN.hashCode());
 				return result;
-	}//end hashCode
+	}
 	
 	/**
 	 * @param
@@ -333,12 +333,12 @@ public class Person {
 		if (obj instanceof Person) {
 			if(((Person)obj).getSSN() == this.getSSN()){
 			flag = true;
-			}//end if
-		}//end if
+			}
+		}
 		return flag;
 	}
 	@Override
 	public String toString() {
 		return "Person [Name= " + getfName() + " " + getlName() + ", Date of Birth= "+ getDOB() + ",SSN= " + getSSN() + "]";
-		}//end toString
-}// end person
+		}
+}
