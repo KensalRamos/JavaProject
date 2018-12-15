@@ -1,5 +1,18 @@
 package javaProject;
 
+/*
+ * File Name: 		Application.java
+ * Name:			Kensal Ramos, Carlos, Jaime 
+ * Course:			COP 2800C at Valencia College
+ * Instructor:		David Stendel
+ * Description:		Final project for java course...
+ * 
+ * Team members:	Kensal J. Ramos, Jaime, Carlos
+ * Date:			5 December 2018	-	Main class created
+ * 
+ */
+
+//Imports
 import java.util.Scanner;
 
 public class Application {
@@ -11,7 +24,8 @@ public class Application {
 		boolean
 			flag = true;
 		int
-			choice = 0;
+			choice = 0,
+			temp = 0;
 		
 		// Database
 		Employee[] empData = new Employee[10];
@@ -39,30 +53,39 @@ public class Application {
 					
 					choice  = scanner.nextInt();
 					switch (choice) {
+					// Exit menu
 					case 0:
 						flag = false;
 						clrScreen();
 						break;
+					// Create an entry
 					case 1:
 						clrScreen();
 						createMenu();
 						createEmpEntry(SIZE, empData);
 						break;
+					// Retrieve an entry
 					case 2:
 						clrScreen();
 						retMenu();
-						System.out.println("Entry found: ");
-						printEmpEntry(retEntry(empData, SIZE), empData);
+						temp = retEntry(empData, SIZE);
+						if (empData[temp] != null) {
+							printEmpEntry(temp, empData);
+						}
+						else
+							System.out.println("Entry not found.");
 						break;
+					// Update an entry
 					case 3:
 						clrScreen();
 						updateMenu();
 						updateEmpEntry(retEntry(empData, SIZE), empData);
 						break;
+					// Delete an entry
 					case 4:
 						clrScreen();
 						delMenu();
-						delEmpEntry(retEntry(empData, SIZE), empData);
+						delEntry(retEntry(empData, SIZE), empData);
 						break;
 						
 					}
@@ -73,35 +96,45 @@ public class Application {
 			case 2:				
 				clrScreen();
 				
-				// Client Menu
+				// Client menu
 				do {
 					clientMenu();
 					
 					choice  = scanner.nextInt();
 					switch (choice) {
+					// Exit menu
 					case 0:
 						flag = false;
 						clrScreen();
 						break;
+					// Create new entry 
 					case 1:
 						clrScreen();
 						createMenu();
 						createCEntry(SIZE, clientData);
 						break;
+					// Retrieve an entry
 					case 2:
 						clrScreen();
 						retMenu();
-						printCEntry(retEntry(clientData, SIZE), clientData);
+						temp = retEntry(clientData, SIZE);
+						if (clientData[temp] != null) {
+							printCEntry(temp, clientData);
+						}
+						else
+							System.out.println("Entry not found.");
 						break;
+					// Update an entry
 					case 3:
 						clrScreen();
 						updateMenu();
 						updateCEntry(retEntry(clientData, SIZE), clientData);
 						break;
+					// Delete an entry
 					case 4:
 						clrScreen();
 						delMenu();
-						delCEntry(retEntry(clientData, SIZE), clientData);
+						delEntry(retEntry(clientData, SIZE), clientData);
 						break;
 						
 					}
@@ -245,7 +278,11 @@ public class Application {
 	}
 	
 	/*
-	 * 
+	 * Name: 			createEmpEntry()
+	 * Parameters: 		int SIZE				- Size of the database array
+	 * 					Employee[] database		- Array of employee objects
+	 * Return Value: 	None
+	 * Description:		Create a new employee entry
 	 */
 	public static void createEmpEntry(int SIZE, Employee[] database) {
 		
@@ -331,9 +368,16 @@ public class Application {
 				}
 				
 		}
-		scanner.close();
+		
 	}
 	
+	/*
+	 * Name: 			createCEntry()
+	 * Parameters: 		int SIZE				- Size of the database array
+	 * 					Employee[] database		- Array of employee objects
+	 * Return Value: 	None
+	 * Description:		Create a new employee entry
+	 */
 	public static void createCEntry(int SIZE, Client[] database) {
 		
 		Scanner scanner = new Scanner(System.in);
@@ -380,7 +424,27 @@ public class Application {
 				System.out.println("You entered: " + database[i].getAddress());
 				
 				// Client-only information
-					
+				
+				// Get company name
+				System.out.print("Please enter a company name: ");
+				database[i].setCompName(scanner.nextLine());
+				System.out.println("You entered: " + database[i].getCompName());
+				
+				// Get company address
+				System.out.print("Please enter a company address: ");
+				database[i].setCompAddress(scanner.nextLine());
+				System.out.println("You entered: " + database[i].getCompAddress());
+				
+				// Get contract expiration date
+				System.out.print("Please enter a contract expiration date: ");
+				database[i].setContractExp(scanner.nextLine());
+				System.out.println("You entered: " + database[i].getContractExp());
+				
+				// Get company budget
+				System.out.print("Please enter a company budget: ");
+				database[i].setCompBudget(scanner.nextDouble());
+				System.out.println("You entered: " + database[i].getCompBudget());
+				
 				printCEntry(i, database);
 				break;
 					
@@ -390,49 +454,75 @@ public class Application {
 				
 		}
 		
-		scanner.close();
+		
 	}
 	
 	/*
-	 * 
+	 * Name: 			printEmpEntry()
+	 * Parameters: 		int i					- Index of desired object
+	 * 					Employee[] database		- Array of employees
+	 * Return Value: 	None
+	 * Description:		Print desired employee object
 	 */
 	public static void printEmpEntry(int i, Employee[] database) {
 		
-		System.out.println("\nEntry at index: " + i);
-		System.out.println("\tName: \n\t  " + database[i].getfName() + " " + database[i].getlName());
-		System.out.println("\tSSN:  \n\t  " + database[i].getSSN());
-		System.out.println("\tDOB:  \n\t  " + database[i].getDOB());
-		System.out.println("\tPhone Number:  \n\t  " + database[i].getpNumber());
-		System.out.println("\tEmail: \n\t  " + database[i].getEmail());
-		System.out.println("\tAddress: \n\t  " + database[i].getAddress());
-		System.out.println("\tGender: \n\t  " + database[i].getGender());
-		System.out.println("\tEducaton: \n\t  " + database[i].getEducation());
-		System.out.println("\tMarital Stat: \n\t  " + database[i].getMaritalStat());
-		System.out.println("\tHire Date: \n\t  " + database[i].getHireDate());
-		System.out.println("\tJob Title: \n\t  " + database[i].getJobTitle());
-		System.out.println("\tWage: \n\t  " + database[i].getWage());
-		System.out.println();
+		if (database != null) {
+			System.out.println("\nEntry at index: " + i);
+			System.out.println("\tName: \n\t  " + database[i].getfName() + " " + database[i].getlName());
+			System.out.println("\tSSN:  \n\t  " + database[i].getSSN());
+			System.out.println("\tDOB:  \n\t  " + database[i].getDOB());
+			System.out.println("\tPhone Number:  \n\t  " + database[i].getpNumber());
+			System.out.println("\tEmail: \n\t  " + database[i].getEmail());
+			System.out.println("\tAddress: \n\t  " + database[i].getAddress());
+			System.out.println("\tGender: \n\t  " + database[i].getGender());
+			System.out.println("\tEducaton: \n\t  " + database[i].getEducation());
+			System.out.println("\tMarital Stat: \n\t  " + database[i].getMaritalStat());
+			System.out.println("\tHire Date: \n\t  " + database[i].getHireDate());
+			System.out.println("\tJob Title: \n\t  " + database[i].getJobTitle());
+			System.out.println("\tWage: \n\t  " + database[i].getWage());
+			System.out.println();
+		}
+		else {
+			System.out.println("Printing failed.");
+		}
 		
 	}
 	
 	/*
-	 * 
+	 * Name: 			printCEntry()
+	 * Parameters: 		int i					- Index of desired object
+	 * 					Client[] database		- Array of clients
+	 * Return Value: 	None
+	 * Description:		Print desired client object
 	 */
 	public static void printCEntry(int i, Client[] database) {
 		
-		System.out.println("\nEntry at index: " + i);
-		System.out.println("\tName: \n\t  " + database[i].getfName() + " " + database[i].getlName());
-		System.out.println("\tSSN:  \n\t  " + database[i].getSSN());
-		System.out.println("\tDOB:  \n\t  " + database[i].getDOB());
-		System.out.println("\tPhone Number:  \n\t  " + database[i].getpNumber());
-		System.out.println("\tEmail: \n\t  " + database[i].getEmail());
-		System.out.println("\tAddress: \n\t  " + database[i].getAddress());
-		System.out.println();
+		if (database != null) {
+			System.out.println("\nEntry at index: " + i);
+			System.out.println("\tName: \n\t  " + database[i].getfName() + " " + database[i].getlName());
+			System.out.println("\tSSN:  \n\t  " + database[i].getSSN());
+			System.out.println("\tDOB:  \n\t  " + database[i].getDOB());
+			System.out.println("\tPhone Number:  \n\t  " + database[i].getpNumber());
+			System.out.println("\tEmail: \n\t  " + database[i].getEmail());
+			System.out.println("\tAddress: \n\t  " + database[i].getAddress());
+			System.out.println("\tCompany Name: \n\t  " + database[i].getCompName());
+			System.out.println("\tCompany Address \n\t  " + database[i].getCompAddress());
+			System.out.println("\tContract Expiration: \n\t  " + database[i].getContractExp());
+			System.out.println("\tCompany Budget: \n\t  " + database[i].getAddress());
+			System.out.println();
+		}
+		else {
+			System.out.println("Printing failed.");
+		}
 		
 	}
 	
 	/*
-	 * 
+	 * Name: 			retEntry()
+	 * Parameters: 		Person[] database	- Array of clients/employees
+	 * 					int SIZE			- Size of the array 
+	 * Return Value: 	None
+	 * Description:		Retrieve desired entry
 	 */
 	public static int retEntry(Person[] database, int SIZE) {
 		
@@ -459,33 +549,27 @@ public class Application {
 			}
 		}
 		
-		scanner.close();
+		
 		return index;
 	}
 	
 	/*
-	 * 
+	 * Name: 			delEntry()
+	 * Parameters: 		int i				- Index of desired object
+	 * 					Person[] database	- Array of employee/client objects
+	 * Return Value: 	None
+	 * Description:		Delete desired entry
 	 */
-	public static int retCEntry(Employee[] database) {
-		return 0;
-	}
-	
-	/*
-	 * Name: delEntry()
-	 */
-	public static void delEmpEntry(int i, Employee[] database) {
+	public static void delEntry(int i, Person[] database) {
 		database[i] = null;
 	}
 	
 	/*
-	 * 
-	 */
-	public static void delCEntry(int i, Client[] database) {
-		database[i] = null;
-	}
-	
-	/*
-	 * Name: updateEmpEntry()
+	 * Name: 			updateEmpEntry()
+	 * Parameters: 		int i				- Index of desired object
+	 * 					Person[] database	- Array of employee objects
+	 * Return Value: 	None
+	 * Description:		Update desired object. Prompts the user if they want to update particular portions
 	 */
 	public static void updateEmpEntry(int i, Employee[] database) {
 		
@@ -854,10 +938,18 @@ public class Application {
 			
 		}
 		
-		scanner.close();
+		
 	}
 	
-public static void updateCEntry(int i, Client[] database) {
+	
+	/*
+	 * Name: 			updateCEntry()
+	 * Parameters: 		int i				- Index of desired object
+	 * 					Person[] database	- Array of client objects
+	 * Return Value: 	None
+	 * Description:		Update desired object. Prompts the user if they want to update particular portions
+	 */
+	public static void updateCEntry(int i, Client[] database) {
 		
 		int
 			num = 0;
@@ -1060,9 +1152,116 @@ public static void updateCEntry(int i, Client[] database) {
 				
 			} while (num == 1);
 			
+			// Company name
+			do {
+				
+				System.out.println("Would you like to update the company name? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired company name: ");
+					database[i].setCompName(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Company address
+			do {
+				
+				System.out.println("Would you like to update the company address? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired company address: ");
+					database[i].setCompAddress(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Contract expiration
+			do {
+				
+				System.out.println("Would you like to update the contract expiration date? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired contract expiration date: ");
+					database[i].setContractExp(scanner.nextLine());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
+			
+			// Company budget
+			do {
+				
+				System.out.println("Would you like to update the company budget? (y or n)");
+				choice = scanner.nextLine();
+				
+				if (choice.equals("y") || choice.equals("Y")) {
+					
+					System.out.println("Please enter desired company budget: ");
+					database[i].setCompBudget(scanner.nextDouble());
+					
+					System.out.println("Entry has been modified.");
+					num = 0;
+				}
+				else if (choice.equals("n") || choice.equals("N")) {
+					
+					System.out.println("No changes made.");
+					num = 0;
+				}
+				else {
+					
+					System.out.println("Invalid choice entered!");
+					num = 1;
+				}
+				
+			} while (num == 1);
 		}
 		
-		scanner.close();
+		
 	}
 	
 }
