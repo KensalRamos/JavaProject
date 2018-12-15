@@ -9,22 +9,25 @@ package javaProject;
  */
 
 public class Client extends Person {
-	
-	private String compName;//company name
-	private String compAddress;//company address
-	private String contractExp;//contract expiration
-	private double compBudget;//company budget
-	
-	//Create Constructs
-	public Client(String SSN,String DOB, String email, String fName, String lName, String pNumber,
-			String address, String emerCont, String ID,
-			String compName, String compAddress, String contractExp, double compBudget) {
-		super(SSN, DOB, email, fName, lName, pNumber, address, emerCont,ID);
+
+	private String compName;
+	private String compAddress;
+	private String contractExp;
+	private double compBudget;
+
+	public Client() {
+
+	}
+
+	// Create Constructs
+	public Client(String SSN, String DOB, String email, String fName, String lName, String pNumber, String address,
+			String emerCont, String ID, String compName, String compAddress, String contractExp, double compBudget) {
+		super(SSN, DOB, email, fName, lName, pNumber, address, emerCont, ID);
 		setCompName(compName);
 		setCompAddress(compAddress);
 		setContractExp(contractExp);
-		setCompBudget(compBudget);		
-	}//end Employee
+		setCompBudget(compBudget);
+	}
 
 	/**
 	 * @return the compName
@@ -39,11 +42,10 @@ public class Client extends Person {
 	public void setCompName(String compName) {
 		if (!compName.isEmpty()) {
 			this.compName = compName;
-		}//end if
-		else {
+		} else {
 			this.compName = "compName not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-	}//end else
+		}
 	}
 
 	/**
@@ -59,11 +61,10 @@ public class Client extends Person {
 	public void setCompAddress(String compAddress) {
 		if (!compAddress.isEmpty()) {
 			this.compAddress = compAddress;
-		}//end if
-		else {
+		} else {
 			this.compAddress = "Company Address not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-	}//end else
+		}
 	}
 
 	/**
@@ -79,11 +80,10 @@ public class Client extends Person {
 	public void setContractExp(String contractExp) {
 		if (!contractExp.isEmpty()) {
 			this.contractExp = contractExp;
-		}//end if
-		else {
+		} else {
 			this.contractExp = "gender not entered";
 			System.out.println("\n\tError: Invalid data!\n");
-	}//end else
+		}
 	}
 
 	/**
@@ -99,12 +99,12 @@ public class Client extends Person {
 	public void setCompBudget(double compBudget) {
 		if (compBudget != 0) {
 			this.compBudget = compBudget;
-		}//end if
-		else {
+		} else {
 			this.compBudget = 0.00;
 			System.out.println("\n\tError: Invalid data!\n");
-	}//end else
+		}
 	}
+
 	/**
 	 * @param
 	 * @return
@@ -113,17 +113,19 @@ public class Client extends Person {
 	@Override
 	public boolean equals(Object obj) {
 		boolean flag = false;
-		
+
 		if (obj instanceof Client) {
-			if(((Client)obj).getID() == this.getID()){
-			flag = true;
-			}//end if
-		}//end if
+			if (((Client) obj).getID() == this.getID()) {
+				flag = true;
+			}
+		}
 		return flag;
 
-		}//end equals
+	}
+
 	@Override
 	public String toString() {
-		return super.toString() + "Client [ID= " + getID() + ", Company Name= "+ getCompName() + "Contract Expiration= " + getContractExp() + "Budget= " + getCompBudget() +"]";
-		}//end toString
-}//end Client
+		return super.toString() + "Client [ID= " + getID() + ", Company Name= " + getCompName()
+				+ "Contract Expiration= " + getContractExp() + "Budget= " + getCompBudget() + "]";
+	}
+}
